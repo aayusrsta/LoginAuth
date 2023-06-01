@@ -1,0 +1,40 @@
+.container {
+  padding-top: 20px;
+  padding-left: 15px;
+  background-color: burlywood;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.customButton {
+  background-color: darkcyan;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0.5, 0.5, 0, 0.2);
+  cursor: pointer;
+  margin-left: 4px;
+}
+.customButton:hover {
+  background-color: gray;
+}
+
+
+.loginCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  align-content: center;
+  width: 250px;
+  height: 180px;
+  background-color: dimgray;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.loginCard:hover {
+  background-color: dimgrey;
+}
