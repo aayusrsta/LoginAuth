@@ -1,19 +1,18 @@
-.header{
-    display: flex;
-    background-color:darkslategray;
-    color: antiquewhite;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left: 10px;
+.header {
+  display: flex;
+  background-color: darkslategray;
+  color: antiquewhite;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
-
 
 .containerDetails {
   padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:50%;
+  gap: 50%;
 }
 
 .customLogout {

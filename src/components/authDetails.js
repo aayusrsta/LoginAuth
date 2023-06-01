@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import '../components/authDetails.css'
+import "../components/authDetails.css";
 import {
   collection,
   doc,
@@ -74,45 +74,47 @@ const AuthDetails = () => {
     <div>
       {authUser ? (
         <>
-        <div className="header">
-          <p>{`Signed In as ${authUser.email}`}</p>
-          <button onClick={userSignOut} className="customLogout">Log Out</button>
+          <div className="header">
+            <p>{`Signed In as ${authUser.email}`}</p>
+            <button onClick={userSignOut} className="customLogout">
+              Log Out
+            </button>
           </div>
           <div className="containerDetails">
-          {userData ? (
-            <div>
-              <h2>User Info</h2>
-              <p>Name: {userData.Name}</p>
-              <p>Age: {userData.Age}</p>
-              <p>Marital Status: {userData.MaritalStatus}</p>
-            </div>
-          ) : (
-            <p>No user data found.</p>
-          )}
-          
-          <div className="todoContainer">
-            <h2 style={{textAlign:'center'}}>Todo List</h2>
-            <form onSubmit={handleAddTodo}>
-              <input
-                type="text"
-                placeholder="Enter a new task"
-                value={newTodo}
-                onChange={(e) => setNewTodo(e.target.value)}
-              />
-              <button type="submit" className="addTaskButton">Add Task</button>
-            </form>
-            {todoList.length > 0 ? (
-              <ul>
-                {todoList.map((todo, index) => (
-                  <li key={index}>{todo}</li>
-                ))}
-              </ul>
+            {userData ? (
+              <div>
+                <h2>User Info</h2>
+                <p>Name: {userData.Name}</p>
+                <p>Age: {userData.Age}</p>
+                <p>Marital Status: {userData.MaritalStatus}</p>
+              </div>
             ) : (
-              <p>No tasks found.</p>
+              <p>No user data found.</p>
             )}
-          </div>
-          
 
+            <div className="todoContainer">
+              <h2 style={{ textAlign: "center" }}>Todo List</h2>
+              <form onSubmit={handleAddTodo}>
+                <input
+                  type="text"
+                  placeholder="Enter a new task"
+                  value={newTodo}
+                  onChange={(e) => setNewTodo(e.target.value)}
+                />
+                <button type="submit" className="addTaskButton">
+                  Add Task
+                </button>
+              </form>
+              {todoList.length > 0 ? (
+                <ul>
+                  {todoList.map((todo, index) => (
+                    <li key={index}>{todo}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No tasks found.</p>
+              )}
+            </div>
           </div>
         </>
       ) : (
