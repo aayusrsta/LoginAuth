@@ -36,7 +36,7 @@ const AuthDetails = () => {
     signOut(auth)
       .then(() => {
         console.log("sign out successful");
-        navigate("/"); // Navigate back to SignIn page
+        navigate("/"); 
       })
       .catch((error) => console.log(error));
   };
