@@ -1,0 +1,58 @@
+.header{
+    display: flex;
+    background-color:darkslategray;
+    color: antiquewhite;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left: 10px;
+}
+
+
+.containerDetails {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:50%;
+}
+
+.customLogout {
+  background-color: darkcyan;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0.5, 0.5, 0, 0.2);
+  cursor: pointer;
+  margin-left: 4px;
+}
+.customLogout:hover {
+  background-color: gray;
+}
+
+.todoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  align-content: center;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.addTaskButton {
+  background-color: darkgreen;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0.5, 0.5, 0, 0.2);
+  cursor: pointer;
+  margin-left: 6px;
+  margin-right: 8px;
+}
+.addTaskButton:hover {
+  background-color: gray;
+}

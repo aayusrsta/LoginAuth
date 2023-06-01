@@ -1,5 +1,13 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import '../components/authDetails.css'
+import {
+  collection,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../components/Form/firebase";
@@ -8,6 +16,8 @@ const AuthDetails = () => {
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [todoList, setTodoList] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, async (user) => {
@@ -18,6 +28,7 @@ const AuthDetails = () => {
         const userSnapshot = await getDoc(userDoc);
         if (userSnapshot.exists()) {
           setUserData(userSnapshot.data());
+          setTodoList(userSnapshot.data().todoList || []);
         } else {
           setUserData(null);
         }
@@ -36,20 +47,41 @@ const AuthDetails = () => {
     signOut(auth)
       .then(() => {
         console.log("sign out successful");
-        navigate("/"); 
+        navigate("/");
       })
       .catch((error) => console.log(error));
+  };
+
+  const handleAddTodo = (e) => {
+    e.preventDefault();
+    const updatedTodoList = [...todoList, newTodo];
+    updateTodoList(updatedTodoList);
+    setNewTodo("");
+  };
+
+  const updateTodoList = async (updatedTodoList) => {
+    try {
+      const firestore = getFirestore();
+      const userDoc = doc(collection(firestore, "users"), authUser.uid);
+      await updateDoc(userDoc, { todoList: updatedTodoList });
+      setTodoList(updatedTodoList);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div>
       {authUser ? (
         <>
+        <div className="header">
           <p>{`Signed In as ${authUser.email}`}</p>
-          <button onClick={userSignOut}>Sign Out</button>
+          <button onClick={userSignOut} className="customLogout">Log Out</button>
+          </div>
+          <div className="containerDetails">
           {userData ? (
             <div>
-              <h2>User Data</h2>
+              <h2>User Info</h2>
               <p>Name: {userData.Name}</p>
               <p>Age: {userData.Age}</p>
               <p>Marital Status: {userData.MaritalStatus}</p>
@@ -57,6 +89,31 @@ const AuthDetails = () => {
           ) : (
             <p>No user data found.</p>
           )}
+          
+          <div className="todoContainer">
+            <h2 style={{textAlign:'center'}}>Todo List</h2>
+            <form onSubmit={handleAddTodo}>
+              <input
+                type="text"
+                placeholder="Enter a new task"
+                value={newTodo}
+                onChange={(e) => setNewTodo(e.target.value)}
+              />
+              <button type="submit" className="addTaskButton">Add Task</button>
+            </form>
+            {todoList.length > 0 ? (
+              <ul>
+                {todoList.map((todo, index) => (
+                  <li key={index}>{todo}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>No tasks found.</p>
+            )}
+          </div>
+          
+
+          </div>
         </>
       ) : (
         <p>Signed Out</p>

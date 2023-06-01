@@ -7,7 +7,6 @@
   align-items: center;
 }
 
-
 .customButton {
   background-color: darkcyan;
   color: white;
@@ -21,7 +20,6 @@
 .customButton:hover {
   background-color: gray;
 }
-
 
 .loginCard {
   display: flex;
