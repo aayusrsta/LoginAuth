@@ -110,28 +110,31 @@ const AuthDetails = () => {
                   placeholder="Enter a new task"
                   value={newTodo}
                   onChange={(e) => setNewTodo(e.target.value)}
+                  style={{ marginLeft: 10 }}
                 />
                 <button type="submit" className="addTaskButton">
                   Add Task
                 </button>
               </form>
-              {todoList.length > 0 ? (
-                <ul>
-                  {todoList.map((todo, index) => (
-                    <li key={index}>
-                      {todo}
-                      <button
-                        onClick={() => handleDeleteTodo(index)}
-                        className="checkButton"
-                      >
-                        &#10004;
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p>No tasks found.</p>
-              )}
+              <div>
+                {todoList.length > 0 ? (
+                  <ul>
+                    {todoList.map((todo, index) => (
+                      <li key={index}>
+                        {todo}
+                        <button
+                          onClick={() => handleDeleteTodo(index)}
+                          className="checkButton"
+                        >
+                          &#10004;
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>No tasks found.</p>
+                )}
+              </div>
               {todoList.length > 0 && (
                 <button onClick={handleResetTodos} className="resetButton">
                   Reset
