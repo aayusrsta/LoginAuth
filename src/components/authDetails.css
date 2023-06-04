@@ -29,6 +29,35 @@
   background-color: gray;
 }
 
+.resetButton {
+  background-color: firebrick;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0.5, 0.5, 0, 0.2);
+  cursor: pointer;
+  margin-left: 4px;
+  margin-bottom: 6px;
+}
+.resetButton:hover {
+  background-color: gray;
+}
+
+.checkButton {
+  background-color: olive;
+  color: white;
+  /* padding: 10px 20px; */
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0.5, 0.5, 0, 0.2);
+  cursor: pointer;
+  margin-left: 5px;
+}
+.checkButton:hover {
+  background-color: gray;
+}
+
 .todoContainer {
   display: flex;
   justify-content: center;

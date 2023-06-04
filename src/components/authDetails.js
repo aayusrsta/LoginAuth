@@ -120,7 +120,10 @@ const AuthDetails = () => {
                   {todoList.map((todo, index) => (
                     <li key={index}>
                       {todo}
-                      <button onClick={() => handleDeleteTodo(index)}>
+                      <button
+                        onClick={() => handleDeleteTodo(index)}
+                        className="checkButton"
+                      >
                         &#10004;
                       </button>
                     </li>
