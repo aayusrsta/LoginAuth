@@ -59,6 +59,16 @@ const AuthDetails = () => {
     setNewTodo("");
   };
 
+  const handleDeleteTodo = (index) => {
+    const updatedTodoList = todoList.filter((_, i) => i !== index);
+    updateTodoList(updatedTodoList);
+  };
+
+  const handleResetTodos = () => {
+    const updatedTodoList = [];
+    updateTodoList(updatedTodoList);
+  };
+
   const updateTodoList = async (updatedTodoList) => {
     try {
       const firestore = getFirestore();
@@ -108,11 +118,21 @@ const AuthDetails = () => {
               {todoList.length > 0 ? (
                 <ul>
                   {todoList.map((todo, index) => (
-                    <li key={index}>{todo}</li>
+                    <li key={index}>
+                      {todo}
+                      <button onClick={() => handleDeleteTodo(index)}>
+                        &#10004;
+                      </button>
+                    </li>
                   ))}
                 </ul>
               ) : (
                 <p>No tasks found.</p>
+              )}
+              {todoList.length > 0 && (
+                <button onClick={handleResetTodos} className="resetButton">
+                  Reset
+                </button>
               )}
             </div>
           </div>
